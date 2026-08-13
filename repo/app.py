@@ -264,7 +264,12 @@ with tab_compare:
         f"\U0001F3C6 **{best_model}** currently has the highest test accuracy "
         f"({results.loc[best_model, 'Accuracy']:.2%})."
     )
-
+st.divider()
+st.subheader("Confusion Matrix")
+cm_model_choice = st.selectbox("Select model", MODEL_NAMES, key="cm_model")
+cm = confusion_matrix(
+    state["y_test"], state["predictions"][cm_model_choice]["y_pred"])
+render_confusion_matrix(cm)
 # --------------------------------------------------------------------------
 # TAB 3 - ROC Analysis
 # --------------------------------------------------------------------------
