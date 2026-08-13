@@ -347,12 +347,7 @@ with tab_interpret:
             "Effect of a one-unit increase in each standardized feature on the "
             "log-odds of malignancy, holding other features constant."
         )
-st.divider()
-st.subheader("Confusion Matrix")
-cm_model_choice = st.selectbox("Select model", MODEL_NAMES, key="cm_model")
-cm = confusion_matrix(
-    state["y_test"], state["predictions"][cm_model_choice]["y_pred"])
-render_confusion_matrix(cm)
+
 # --------------------------------------------------------------------------
 # TAB 5 - Test Data Evaluation
 # --------------------------------------------------------------------------
