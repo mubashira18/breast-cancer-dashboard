@@ -440,3 +440,19 @@ with tab_eval:
             st.dataframe(out, use_container_width=True)
     elif evaluate_clicked and uploaded_file is None:
         st.warning("Please upload a CSV file first.")
+
+
+## --------------------------------------------------------------------------tab6---------------##
+
+with tab_eval:
+    st.subheader("Confusion matrix")
+    cm_model_choice = st.selectbox("Select model", MODEL_NAMES, key="cm_model")
+    cm = confusion_matrix(
+        state["y_test"], state["predictions"][cm_model_choice]["y_pred"])
+    render_confusion_matrix(cm)
+# st.divider()
+# st.subheader("Confusion Matrix")
+# cm_model_choice = st.selectbox("Select model", MODEL_NAMES, key="cm_model")
+# cm = confusion_matrix(
+#     state["y_test"], state["predictions"][cm_model_choice]["y_pred"])
+# render_confusion_matrix(cm)
