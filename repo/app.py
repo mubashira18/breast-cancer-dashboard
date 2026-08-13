@@ -144,7 +144,7 @@ def feature_groups(columns):
 
 
 def render_confusion_matrix(cm, labels=("Benign", "Malignant")):
-    fig, ax = plt.subplots(figsize=(3, 1.5))
+    fig, ax = plt.subplots(figsize=(4, 3.5))
     sns.heatmap(
         cm, annot=True, fmt="d", cmap="Blues",
         xticklabels=labels, yticklabels=labels, cbar=False, ax=ax,
@@ -317,7 +317,7 @@ with tab_interpret:
         }).sort_values("Importance", ascending=False).head(10)
         top_rf = rf_importance.sort_values("Importance")
 
-        fig, ax = plt.subplots(figsize=(4, 4))
+        fig, ax = plt.subplots(figsize=(6, 5))
         ax.barh(top_rf["Feature"], top_rf["Importance"], color="seagreen")
         ax.set_xlabel("Importance")
         st.pyplot(fig)
@@ -338,7 +338,7 @@ with tab_interpret:
         ).head(10)
         top_lr = logreg_coef.sort_values("Coefficient")
 
-        fig, ax = plt.subplots(figsize=(4, 4))
+        fig, ax = plt.subplots(figsize=(6, 5))
         ax.barh(top_lr["Feature"], top_lr["Coefficient"], color="steelblue")
         ax.axvline(0, linestyle="--", color="gray")
         ax.set_xlabel("Coefficient")
