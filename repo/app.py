@@ -172,12 +172,13 @@ MODEL_NAMES = list(state["models"].keys())
 st.title("\U0001FA7A Breast Cancer Classification")
 st.caption("Wisconsin Diagnostic Dataset")
 
-tab_predict, tab_compare, tab_roc, tab_interpret, tab_eval = st.tabs([
+tab_predict, tab_compare, tab_roc, tab_interpret, tab_eval, tab_cm = st.tabs([
     "\U0001F52C Prediction",
     "\U0001F4CA Model Comparison",
     "\U0001F4C8 ROC Analysis",
     "\U0001F50E Interpretability",
     "\U0001F4C1 Test Data Evaluation",
+    "\U0001F4C1 Confusion Matrix"
 ])
 
 # --------------------------------------------------------------------------
@@ -444,7 +445,7 @@ with tab_eval:
 
 ## --------------------------------------------------------------------------tab6---------------##
 
-with tab_eval:
+with tab_cm:
     st.subheader("Confusion matrix")
     cm_model_choice = st.selectbox("Select model", MODEL_NAMES, key="cm_model")
     cm = confusion_matrix(
