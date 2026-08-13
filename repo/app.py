@@ -273,7 +273,7 @@ with tab_roc:
     st.subheader("ROC Curve Comparison")
 
     y_test = state["y_test"]
-    fig, ax = plt.subplots(figsize=(2, 2))
+    fig, ax = plt.subplots(figsize=(4, 4))
     for name, pred in state["predictions"].items():
         fpr, tpr, _ = roc_curve(y_test, pred["y_prob"])
         roc_auc_val = auc(fpr, tpr)
