@@ -41,7 +41,8 @@ from sklearn.metrics import (
 )
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_PATH = os.path.join(BASE_DIR, "UCI Breast Cancer Wisconsin", "data.csv")
+DATA_PATH = os.path.join(
+    BASE_DIR, "model", "UCI Breast Cancer Wisconsin", "data.csv")
 
 st.set_page_config(
     page_title="Breast Cancer Classification",
@@ -77,8 +78,10 @@ def train_models():
     scaler = StandardScaler()
     X_train_scaled = scaler.fit_transform(X_train)
     X_test_scaled = scaler.transform(X_test)
-    X_train_scaled = pd.DataFrame(X_train_scaled, columns=X.columns, index=X_train.index)
-    X_test_scaled = pd.DataFrame(X_test_scaled, columns=X.columns, index=X_test.index)
+    X_train_scaled = pd.DataFrame(
+        X_train_scaled, columns=X.columns, index=X_train.index)
+    X_test_scaled = pd.DataFrame(
+        X_test_scaled, columns=X.columns, index=X_test.index)
 
     models = {
         "Logistic Regression": LogisticRegression(random_state=42),
@@ -209,7 +212,8 @@ with tab_predict:
     input_values.update(render_inputs(worst_feats, "Worst Features"))
     st.divider()
 
-    model_choice = st.selectbox("Select Model", MODEL_NAMES, key="predict_model")
+    model_choice = st.selectbox(
+        "Select Model", MODEL_NAMES, key="predict_model")
     predict_clicked = st.button("\U0001F50D Predict", type="primary")
 
     if predict_clicked:
@@ -273,7 +277,8 @@ with tab_roc:
         fpr, tpr, _ = roc_curve(y_test, pred["y_prob"])
         roc_auc_val = auc(fpr, tpr)
         ax.plot(fpr, tpr, label=f"{name} (AUC = {roc_auc_val:.4f})")
-    ax.plot([0, 1], [0, 1], linestyle="--", color="gray", label="Random Classifier")
+    ax.plot([0, 1], [0, 1], linestyle="--",
+            color="gray", label="Random Classifier")
     ax.set_xlabel("False Positive Rate")
     ax.set_ylabel("True Positive Rate")
     ax.set_title("ROC Curve Comparison")
@@ -355,7 +360,8 @@ with tab_eval:
     )
 
     uploaded_file = st.file_uploader("Upload test data", type=["csv"])
-    eval_model_choice = st.selectbox("Select Model", MODEL_NAMES, key="eval_model")
+    eval_model_choice = st.selectbox(
+        "Select Model", MODEL_NAMES, key="eval_model")
     evaluate_clicked = st.button("Evaluate", type="primary")
 
     if uploaded_file is not None and evaluate_clicked:
@@ -406,17 +412,21 @@ with tab_eval:
         y_pred_upload = model.predict(X_upload_model)
         y_prob_upload = model.predict_proba(X_upload_model)[:, 1]
 
-        st.markdown(f"**Uploaded dataset:** {test_df.shape[0]} rows x {test_df.shape[1]} columns")
+        st.markdown(
+            f"**Uploaded dataset:** {test_df.shape[0]} rows x {test_df.shape[1]} columns")
 
         if has_labels:
             m1, m2, m3 = st.columns(3)
-            m1.metric("Accuracy", f"{accuracy_score(y_upload, y_pred_upload):.2%}")
+            m1.metric(
+                "Accuracy", f"{accuracy_score(y_upload, y_pred_upload):.2%}")
             m2.metric("AUC", f"{roc_auc_score(y_upload, y_prob_upload):.4f}")
-            m3.metric("Precision", f"{precision_score(y_upload, y_pred_upload):.2%}")
+            m3.metric(
+                "Precision", f"{precision_score(y_upload, y_pred_upload):.2%}")
             m4, m5, m6 = st.columns(3)
             m4.metric("Recall", f"{recall_score(y_upload, y_pred_upload):.2%}")
             m5.metric("F1", f"{f1_score(y_upload, y_pred_upload):.2%}")
-            m6.metric("MCC", f"{matthews_corrcoef(y_upload, y_pred_upload):.4f}")
+            m6.metric(
+                "MCC", f"{matthews_corrcoef(y_upload, y_pred_upload):.4f}")
 
             st.markdown("**Confusion Matrix**")
             cm = confusion_matrix(y_upload, y_pred_upload)
@@ -424,7 +434,8 @@ with tab_eval:
         else:
             st.info("No `diagnosis` column found — showing predictions only.")
             out = test_df.copy()
-            out["Predicted"] = np.where(y_pred_upload == 0, "Benign", "Malignant")
+            out["Predicted"] = np.where(
+                y_pred_upload == 0, "Benign", "Malignant")
             out["Malignant_Probability"] = y_prob_upload
             st.dataframe(out, use_container_width=True)
     elif evaluate_clicked and uploaded_file is None:
