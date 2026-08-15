@@ -169,6 +169,8 @@ except FileNotFoundError:
 
 MODEL_NAMES = list(state["models"].keys())
 
+st.markdown("<h1 style='text-align: center;'>ML Assignment 2</h1>",
+            unsafe_allow_html=True)
 st.title("\U0001FA7A Breast Cancer Classification")
 st.caption("Wisconsin Diagnostic Dataset")
 st.caption("Shaik.Mubashira,2025ad05096")
