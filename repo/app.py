@@ -181,7 +181,7 @@ tab_predict, tab_compare, tab_roc, tab_interpret, tab_eval, tab_cm = st.tabs([
     "\U0001F4C8 ROC Analysis",
     "\U0001F50E Interpretability",
     "\U0001F4C1 Test Data Evaluation",
-    "\U0001F4C1 Confusion Matrix"
+    "\U0001F522 Confusion Matrix"
 ])
 
 # --------------------------------------------------------------------------
