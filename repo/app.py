@@ -42,7 +42,7 @@ from sklearn.metrics import (
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_PATH = os.path.join(
-    BASE_DIR, "model", "UCI Breast Cancer Wisconsin", "data.csv")
+    BASE_DIR, "data", "UCI Breast Cancer Wisconsin", "data.csv")
 
 st.set_page_config(
     page_title="Breast Cancer Classification",

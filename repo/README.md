@@ -55,7 +55,7 @@ streamlit run app.py
 
 ## d. Models Used
 
-Six classification models were trained and evaluated on a held-out test split: Logistic Regression, Decision Tree, kNN, Gaussian Naive Bayes, Random Forest (Ensemble), and SVM.
+Six classification models were trained and evaluated on a held-out test split: Logistic Regression, Decision Tree, kNN, Gaussian Naive Bayes, Random Forest (Ensemble)
 
 ### Comparison Table
 
@@ -66,7 +66,7 @@ Six classification models were trained and evaluated on a held-out test split: L
 | kNN | 95.61% | 0.9823 | 97.44% | 90.48% | 93.83% | 0.9058 |
 | Naive Bayes | 93.86% | 0.9934 | 100.00% | 83.33% | 90.91% | 0.8715 |
 | Random Forest (Ensemble) | 97.37% | 0.9929 | 100.00% | 92.86% | 96.30% | 0.9442 |
-| SVM | `<fill in>` | `<fill in>` | `<fill in>` | `<fill in>` | `<fill in>` | `<fill in>` |
+
 
 ### Observations on Model Performance
 
@@ -77,5 +77,5 @@ Six classification models were trained and evaluated on a held-out test split: L
 | kNN | Performs solidly with 95.61% accuracy and high precision (97.44%), though its recall (90.48%) is a little lower, meaning it misses slightly more malignant cases than the top models. |
 | Naive Bayes | Reaches perfect precision (100%) but the lowest recall (83.33%) of all models — it is very conservative and avoids false positives, at the cost of missing some actual malignant cases. |
 | Random Forest (Ensemble) | Best overall by Accuracy (97.37%), F1 (96.30%), and MCC (0.9442), combining strong precision and recall consistently. |
-| SVM | `<fill in based on your SVM results>` |
+
 | **Overall Winner for your dataset?** | **Random Forest** is the overall winner, leading on Accuracy, F1, and MCC, while Logistic Regression edges it out slightly on AUC alone. All models learned meaningful, non-random patterns, the ROC curves are strong across the board, confusion matrices show relatively few errors, and feature-importance analysis (Random Forest impurity reduction, Logistic Regression standardized coefficients) produced sensible results. A tuned Random Forest (via GridSearchCV) did not improve test performance over the baseline, so the baseline Random Forest was kept as the final model. 
