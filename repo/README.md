@@ -76,7 +76,7 @@ Six classification models were trained and evaluated on a held-out test split: L
 | Naive Bayes | Reaches perfect precision (100%) but the lowest recall (83.33%) of all models — it is very conservative and avoids false positives, at the cost of missing some actual malignant cases. |
 | Random Forest (Ensemble) | Best overall by Accuracy (97.37%), F1 (96.30%), and MCC (0.9442), combining strong precision and recall consistently. |
 
-| **Overall Winner for your dataset?** | **Random Forest** is the overall winner, leading on Accuracy, F1, and MCC, while Logistic Regression edges it out slightly on AUC alone. All models learned meaningful, non-random patterns, the ROC curves are strong across the board, confusion matrices show relatively few errors, and feature-importance analysis (Random Forest impurity reduction, Logistic Regression standardized coefficients) produced sensible results. A tuned Random Forest (via GridSearchCV) did not improve test performance over the baseline, so the baseline Random Forest was kept as the final model. 
+| **Overall Winner for my dataset?** | **Random Forest** is the overall winner, leading on Accuracy, F1, and MCC, while Logistic Regression edges it out slightly on AUC alone. All models learned meaningful, non-random patterns, the ROC curves are strong across the board, confusion matrices show relatively few errors, and feature-importance analysis (Random Forest impurity reduction, Logistic Regression standardized coefficients) produced sensible results. A tuned Random Forest (via GridSearchCV) did not improve test performance over the baseline, so the baseline Random Forest was kept as the final model. 
 
 ## c. streamlit app link 
 
